@@ -1,13 +1,13 @@
-
 import React from 'react';
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
   onViewDetails: () => void;
+  onLogout: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onViewDetails }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onViewDetails, onLogout }) => {
   return (
     <>
       <div 
@@ -17,13 +17,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onViewDetails }) => 
       <div 
         className={`fixed left-0 top-0 h-full w-72 bg-white dark:bg-gray-900 z-[101] shadow-2xl transition-transform duration-300 ease-out transform ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
-        <div className="p-8">
+        <div className="p-8 flex flex-col h-full">
           <div className="mb-10">
             <h2 className="text-2xl font-black text-indigo-600 dark:text-indigo-400">Expense App</h2>
-            <p className="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-widest mt-1">Version 1.2.0</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-widest mt-1">Version 2.2.0 (Native)</p>
           </div>
 
-          <nav className="space-y-4">
+          <nav className="space-y-4 flex-1">
             <button 
               onClick={onViewDetails}
               className="w-full flex items-center gap-4 p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 font-bold transition-all hover:scale-105 active:scale-95"
@@ -35,19 +35,19 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onViewDetails }) => 
             </button>
 
             <button 
-              onClick={onClose}
-              className="w-full flex items-center gap-4 p-4 rounded-2xl text-gray-600 dark:text-gray-400 font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+              onClick={onLogout}
+              className="w-full flex items-center gap-4 p-4 rounded-2xl text-rose-600 font-bold hover:bg-rose-50 dark:hover:bg-rose-900/10 transition-all"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
-              Home
+              Logout
             </button>
           </nav>
-        </div>
-        
-        <div className="absolute bottom-8 left-8 right-8 text-gray-300 dark:text-gray-700 text-xs font-bold uppercase tracking-widest text-center">
-          © 2025 Daily Report
+          
+          <div className="text-gray-300 dark:text-gray-700 text-[10px] font-black uppercase tracking-widest text-center mt-auto">
+            © 2025 Ledger Pro Native
+          </div>
         </div>
       </div>
     </>
